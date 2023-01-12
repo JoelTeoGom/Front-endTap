@@ -4,6 +4,10 @@
  */
 package Frontend;
 
+import Estructura.ActorContext;
+
+import javax.swing.*;
+
 /**
  *
  * @author joelt
@@ -16,6 +20,8 @@ public class LlistaActors extends javax.swing.JFrame {
     public LlistaActors() {
         initComponents();
          setLocationRelativeTo(null);
+        //jTextField1.setText(ActorContext.getInstance().getNames().toString());
+        System.out.println(ActorContext.getInstance().getNames().toString());
     }
 
     /**
@@ -38,7 +44,6 @@ public class LlistaActors extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -78,7 +83,7 @@ public class LlistaActors extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
@@ -112,6 +117,7 @@ public class LlistaActors extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LlistaActors().setVisible(true);
+
             }
         });
     }
