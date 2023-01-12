@@ -5,6 +5,8 @@ package Frontend;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import Estructura.ActorContext;
+
 /**
  *
  * @author joelt
@@ -89,9 +91,10 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_crearActorActionPerformed
 
     private void llistaActorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llistaActorsActionPerformed
-        dispose();
-        LlistaActors llista = new LlistaActors();
-        llista.setVisible(true);
+//        dispose();
+//        LlistaActors llista = new LlistaActors();
+//        llista.setVisible(true);
+        System.out.println(ActorContext.getInstance().getNames().toString());
     }//GEN-LAST:event_llistaActorsActionPerformed
 
     private void monitoritzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monitoritzarActionPerformed
