@@ -333,23 +333,25 @@ public class SendReceive extends javax.swing.JFrame {
         switch (message){
             case ADD:
                 for(int i= 1; i<=nMensajes; i++){
-                    actorProxyTo.send(new AddInsultMessage(actorProxyFrom,text));
+                    actorProxyTo.send(new AddInsultMessage(actorProxyFrom,text+i));
                 }
                 break;
             case GET:
                 for(int i= 1; i<=nMensajes; i++){
                     actorProxyTo.send(new GetInsultMessage(actorProxyFrom));
                 }
+                System.out.println(actorProxyFrom.receive().getMessage());
                 break;
             case HELLO:
                 for(int i= 1; i<=nMensajes; i++){
-                    actorProxyTo.send(new HelloWorldMessage(actorProxyFrom,text));
+                    actorProxyTo.send(new HelloWorldMessage(actorProxyFrom,text+i));
                 }
                 break;
             case GETALL:
                 for(int i= 1; i<=nMensajes; i++){
                     actorProxyTo.send(new GetAllInsultMessage(actorProxyFrom));
                 }
+                System.out.println(actorProxyFrom.receive().getMessage());
                 break;
             default:
                 System.out.println("Mensaje no reconocido");
