@@ -26,11 +26,21 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="crearActor" min="-2" pref="189" max="-2" attributes="0"/>
                   <Component id="monitoritzar" min="-2" pref="189" max="-2" attributes="0"/>
-                  <Component id="llistaActors" min="-2" pref="189" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="crearActor" min="-2" pref="189" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="ringApp" min="-2" pref="189" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="llistaActors" min="-2" pref="189" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="monitor" min="-2" pref="189" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="256" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,12 +48,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-              <Component id="llistaActors" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Component id="crearActor" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="llistaActors" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="monitor" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="crearActor" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="ringApp" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Component id="monitoritzar" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -71,6 +87,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearActorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="monitor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MonitoritzarActor"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="monitorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ringApp">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="RingApp"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ringAppActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

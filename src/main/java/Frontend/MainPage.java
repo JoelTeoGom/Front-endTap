@@ -5,7 +5,11 @@ package Frontend;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import Estructura.Actor;
 import Estructura.ActorContext;
+import otros.RingActor;
+import Message.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,6 +37,8 @@ public class MainPage extends javax.swing.JFrame {
         llistaActors = new javax.swing.JButton();
         monitoritzar = new javax.swing.JButton();
         crearActor = new javax.swing.JButton();
+        monitor = new javax.swing.JButton();
+        ringApp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +63,24 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
+        monitor.setText("MonitoritzarActor");
+        monitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monitorActionPerformed(evt);
+            }
+        });
+
+        ringApp.setText("RingApp");
+        ringApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    ringAppActionPerformed(evt);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,21 +88,32 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(crearActor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(monitoritzar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(llistaActors, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(256, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(crearActor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ringApp, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(llistaActors, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(31, 31, 31)
+                            .addComponent(monitor, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addComponent(llistaActors, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(crearActor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(llistaActors, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monitor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(crearActor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ringApp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
                 .addComponent(monitoritzar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -91,7 +126,6 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_crearActorActionPerformed
 
     private void llistaActorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llistaActorsActionPerformed
-        dispose();
         LlistaActors llista = new LlistaActors();
         llista.setVisible(true);
        // System.out.println(ActorContext.getInstance().getNames().toString());
@@ -103,6 +137,30 @@ public class MainPage extends javax.swing.JFrame {
         a.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_monitoritzarActionPerformed
+
+    private void monitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monitorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_monitorActionPerformed
+
+    private void ringAppActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_ringAppActionPerformed
+        ArrayList<RingActor> ring = new ArrayList<>();
+        ring.add(0,new RingActor());
+        int i = 1;
+        while (i < 20){
+            RingActor anterior = ring.get(i-1);
+            RingActor actual = new RingActor();
+            anterior.setNext(ActorContext.getInstance().spawnActor("Ring"+i, actual));
+            ring.add(i, actual);
+            if(i == 19)
+                actual.setNext(ActorContext.getInstance().spawnActor("Primero",ring.get(0)));
+            i++;
+        }
+        for (i = 1; i<=20; i++){
+            RingActor inicial = ring.get(1);
+            inicial.process(new Message(ActorContext.getInstance().lookup("Primero"),""+i ));
+        }
+
+    }//GEN-LAST:event_ringAppActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +200,8 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crearActor;
     private javax.swing.JButton llistaActors;
+    private javax.swing.JButton monitor;
     private javax.swing.JButton monitoritzar;
+    private javax.swing.JButton ringApp;
     // End of variables declaration//GEN-END:variables
 }
