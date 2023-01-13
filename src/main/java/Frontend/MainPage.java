@@ -43,7 +43,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        monitoritzar.setText("MonitoritzarActor");
+        monitoritzar.setText("Receive/Send");
         monitoritzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 monitoritzarActionPerformed(evt);
@@ -99,8 +99,9 @@ public class MainPage extends javax.swing.JFrame {
 
     private void monitoritzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monitoritzarActionPerformed
         dispose();
-        MonitoritzaActors llista = new MonitoritzaActors();
-        llista.setVisible(true);        // TODO add your handling code here:
+        SendReceive a = new SendReceive();
+        a.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_monitoritzarActionPerformed
 
     /**
