@@ -8,8 +8,7 @@ import Estructura.Actor;
 import Estructura.ActorContext;
 import HelloWorld.HelloWorldActor;
 import Insult.InsultActor;
-import otros.RingActor;
-
+import RingActor.*;
 import java.util.ArrayList;
 
 /**
@@ -148,7 +147,7 @@ public class SeleccionAutomaticaCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_helloWorldActorActionPerformed
 
     private void RingActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RingActorActionPerformed
-        ArrayList<otros.RingActor> ring = new ArrayList<>();
+        ArrayList<RingActor> ring = new ArrayList<>();
         ring.add(0,new RingActor());
         int i = 1;
         while (i < n){

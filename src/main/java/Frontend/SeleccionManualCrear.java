@@ -8,7 +8,7 @@ import Estructura.Actor;
 import Estructura.ActorContext;
 import HelloWorld.HelloWorldActor;
 import Insult.InsultActor;
-import otros.RingActor;
+import RingActor.*;
 
 /**
  *

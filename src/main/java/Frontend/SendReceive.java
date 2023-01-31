@@ -14,6 +14,8 @@ import Insult.GetInsultMessage;
 import Insult.InsultActor;
 import Message.Message;
 
+import javax.swing.*;
+
 /**
  *
  * @author joel
@@ -58,7 +60,6 @@ public class SendReceive extends javax.swing.JFrame {
         addInsultMessage = new javax.swing.JButton();
         getInsult = new javax.swing.JButton();
         getAllInsult = new javax.swing.JButton();
-        send = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         textMessage = new javax.swing.JTextField();
@@ -72,11 +73,7 @@ public class SendReceive extends javax.swing.JFrame {
 
         jLabel2.setText("To");
 
-        to.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                toActionPerformed(evt);
-            }
-        });
+
 
         jLabel3.setText("Send / Receive ");
 
@@ -101,36 +98,41 @@ public class SendReceive extends javax.swing.JFrame {
         helloWorld.setText("HelloWorldMessage");
         helloWorld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helloWorldActionPerformed(evt);
+                try {
+                    helloWorldActionPerformed(evt);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
         addInsultMessage.setText("AddInsultMessage");
         addInsultMessage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addInsultMessageActionPerformed(evt);
+                try {
+                    addInsultMessageActionPerformed(evt);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
         getInsult.setText("GetInsultMessage");
         getInsult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getInsultActionPerformed(evt);
+                try {
+                    getInsultActionPerformed(evt);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
         getAllInsult.setText("GetAllInsultMessage");
         getAllInsult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getAllInsultActionPerformed(evt);
-            }
-        });
-
-        send.setText("SEND");
-        send.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-                    sendActionPerformed(evt);
+                    getAllInsultActionPerformed(evt);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -149,28 +151,21 @@ public class SendReceive extends javax.swing.JFrame {
                     .addComponent(addInsultMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(getInsult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(getAllInsult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(send)
-                .addGap(74, 74, 74))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel5)
-                        .addGap(34, 34, 34)
-                        .addComponent(helloWorld)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(addInsultMessage)
-                        .addGap(44, 44, 44)
-                        .addComponent(getInsult)
-                        .addGap(49, 49, 49)
-                        .addComponent(getAllInsult)))
+                .addGap(64, 64, 64)
+                .addComponent(jLabel5)
+                .addGap(34, 34, 34)
+                .addComponent(helloWorld)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(addInsultMessage)
+                .addGap(44, 44, 44)
+                .addComponent(getInsult)
+                .addGap(49, 49, 49)
+                .addComponent(getAllInsult)
                 .addGap(55, 55, 55))
         );
 
@@ -180,7 +175,7 @@ public class SendReceive extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 151, Short.MAX_VALUE))
+                .addGap(0, 126, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,51 +194,43 @@ public class SendReceive extends javax.swing.JFrame {
             }
         });
 
-        from.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(returnBut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 54, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel3)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(messageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel1)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                                    .addComponent(from, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(to, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(textMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(107, 107, 107))
+                                    .addComponent(messageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                            .addComponent(from, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(to, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(270, 270, 270)))))
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(107, 107, 107))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(270, 270, 270)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(521, 521, 521))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,13 +266,7 @@ public class SendReceive extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromActionPerformed
-        if(ActorContext.getInstance().getActorLibrary().containsKey(from.getText())){
-             actorProxyFrom = ActorContext.getInstance().lookup(from.getText());
-        }else{
-             actorProxyFrom = ActorContext.getInstance().spawnActor(from.getText(),new InsultActor());
-        }
-    }//GEN-LAST:event_fromActionPerformed
+
 
     private void returnButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButActionPerformed
         dispose();
@@ -293,71 +274,31 @@ public class SendReceive extends javax.swing.JFrame {
         llista.setVisible(true);
     }//GEN-LAST:event_returnButActionPerformed
 
-    private void toActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toActionPerformed
-        if(ActorContext.getInstance().getActorLibrary().containsKey(to.getText())){
-             actorProxyTo = ActorContext.getInstance().lookup(to.getText());
-        }else{
-             actorProxyTo = ActorContext.getInstance().spawnActor(to.getText(),new InsultActor());
-        }
-    }//GEN-LAST:event_toActionPerformed
+
 
     private void messageNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageNumActionPerformed
         nMensajes = Integer.parseInt(messageNum.getText());
     }//GEN-LAST:event_messageNumActionPerformed
 
-    private void helloWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helloWorldActionPerformed
-        message = MessageEnum.HELLO;
-    }//GEN-LAST:event_helloWorldActionPerformed
-
-    private void getInsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInsultActionPerformed
-        message = MessageEnum.GET;
-    }//GEN-LAST:event_getInsultActionPerformed
-
-    private void sendActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_sendActionPerformed
-
-        switch (message){
-            case ADD:
-                for(int i= 1; i<=nMensajes; i++)
-                    actorProxyTo.send(new AddInsultMessage(actorProxyFrom,text+i));
-
-                break;
-            case GET:
-                for(int i= 1; i<=nMensajes; i++)
-                    actorProxyTo.send(new GetInsultMessage(actorProxyFrom));
-
-                System.out.println(actorProxyFrom.receive().getMessage());
-                break;
-            case HELLO:
-                for(int i= 1; i<=nMensajes; i++)
-                    actorProxyTo.send(new HelloWorldMessage(actorProxyFrom,text+i));
-
-                break;
-            case GETALL:
-                for(int i= 1; i<=nMensajes; i++)
-                    actorProxyTo.send(new GetAllInsultMessage(actorProxyFrom));
-
-                System.out.println(actorProxyFrom.receive().getMessage());
-                break;
-            default:
-                System.out.println("Mensaje no reconocido");
-                break;
-
-        }
-
-        
-    }//GEN-LAST:event_sendActionPerformed
-
-    private void getAllInsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAllInsultActionPerformed
-        message = MessageEnum.GETALL;
-    }//GEN-LAST:event_getAllInsultActionPerformed
-
-    private void addInsultMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addInsultMessageActionPerformed
-        message = MessageEnum.ADD;
-    }//GEN-LAST:event_addInsultMessageActionPerformed
-
     private void textMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMessageActionPerformed
         text = textMessage.getText();
     }//GEN-LAST:event_textMessageActionPerformed
+
+    private void getAllInsultActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_getAllInsultActionPerformed
+        Controller.getInstance().sendGetAllInsultMessage(this);
+    }//GEN-LAST:event_getAllInsultActionPerformed
+
+    private void getInsultActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_getInsultActionPerformed
+        Controller.getInstance().sendGetInsultMessage(this);
+    }//GEN-LAST:event_getInsultActionPerformed
+
+    private void addInsultMessageActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_addInsultMessageActionPerformed
+        Controller.getInstance().sendAddInsultMessage(this);
+    }//GEN-LAST:event_addInsultMessageActionPerformed
+
+    private void helloWorldActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_helloWorldActionPerformed
+        Controller.getInstance().sendHelloWorldMessage(this);
+    }//GEN-LAST:event_helloWorldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,8 +352,40 @@ public class SendReceive extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField messageNum;
     private javax.swing.JButton returnBut;
-    private javax.swing.JButton send;
     private javax.swing.JTextField textMessage;
     private javax.swing.JTextField to;
     // End of variables declaration//GEN-END:variables
+
+
+    public JTextField getFrom() {
+        return from;
+    }
+
+    public void setFrom(JTextField from) {
+        this.from = from;
+    }
+
+    public JTextField getMessageNum() {
+        return messageNum;
+    }
+
+    public void setMessageNum(JTextField messageNum) {
+        this.messageNum = messageNum;
+    }
+
+    public JTextField getTextMessage() {
+        return textMessage;
+    }
+
+    public void setTextMessage(JTextField textMessage) {
+        this.textMessage = textMessage;
+    }
+
+    public JTextField getTo() {
+        return to;
+    }
+
+    public void setTo(JTextField to) {
+        this.to = to;
+    }
 }

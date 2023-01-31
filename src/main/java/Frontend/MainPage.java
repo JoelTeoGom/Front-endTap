@@ -7,7 +7,7 @@ package Frontend;
 
 import Estructura.Actor;
 import Estructura.ActorContext;
-import otros.RingActor;
+import RingActor.*;
 import Message.*;
 import java.util.ArrayList;
 
@@ -128,38 +128,20 @@ public class MainPage extends javax.swing.JFrame {
     private void llistaActorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llistaActorsActionPerformed
         LlistaActors llista = new LlistaActors();
         llista.setVisible(true);
-       // System.out.println(ActorContext.getInstance().getNames().toString());
     }//GEN-LAST:event_llistaActorsActionPerformed
 
     private void monitoritzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monitoritzarActionPerformed
         dispose();
         SendReceive a = new SendReceive();
         a.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_monitoritzarActionPerformed
 
     private void monitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monitorActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_monitorActionPerformed
 
     private void ringAppActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_ringAppActionPerformed
-        ArrayList<RingActor> ring = new ArrayList<>();
-        ring.add(0,new RingActor());
-        int i = 1;
-        while (i < 20){
-            RingActor anterior = ring.get(i-1);
-            RingActor actual = new RingActor();
-            anterior.setNext(ActorContext.getInstance().spawnActor("Ring"+i, actual));
-            ring.add(i, actual);
-            if(i == 19)
-                actual.setNext(ActorContext.getInstance().spawnActor("Primero",ring.get(0)));
-            i++;
-        }
-        for (i = 1; i<=20; i++){
-            RingActor inicial = ring.get(1);
-            inicial.process(new Message(ActorContext.getInstance().lookup("Primero"),""+i ));
-        }
-
+        Controller.getInstance().ringActorApp();
     }//GEN-LAST:event_ringAppActionPerformed
 
     /**
@@ -203,5 +185,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton monitor;
     private javax.swing.JButton monitoritzar;
     private javax.swing.JButton ringApp;
+
     // End of variables declaration//GEN-END:variables
 }

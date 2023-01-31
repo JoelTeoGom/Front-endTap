@@ -21,7 +21,7 @@ public class ActorDecorator extends Actor {
 
     /**
      * Gets the queue
-     * @return BlockingQueue<Message>
+     * @return cua de missatges
      */
     public BlockingQueue<Message> getQueue() {
         return this.actor.getQueue();
@@ -74,5 +74,9 @@ public class ActorDecorator extends Actor {
     @Override
     public void send(Message message) throws InterruptedException {
         this.actor.send(message);
+    }
+
+    public Actor getActor(){
+        return actor;
     }
 }
