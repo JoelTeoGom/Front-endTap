@@ -144,6 +144,8 @@ public class MainPage extends javax.swing.JFrame {
 
     private void ringAppActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_ringAppActionPerformed
         Controller.getInstance().ringActorApp();
+        MonitoritzaActors m = new MonitoritzaActors();
+        m.setVisible(true);
     }//GEN-LAST:event_ringAppActionPerformed
 
     /**
