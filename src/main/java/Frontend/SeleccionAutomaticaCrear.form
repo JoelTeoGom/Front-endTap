@@ -25,15 +25,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="RingActor" max="32767" attributes="0"/>
-                      <Component id="insultButton" max="32767" attributes="0"/>
-                      <Component id="ActorNormal" alignment="1" pref="254" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="helloWorldActor" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="helloWorldActor" alignment="0" pref="254" max="32767" attributes="0"/>
                   <Component id="jLabel1" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
                   <Component id="returnBut" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="RingActor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="insultButton" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -52,9 +49,7 @@
               <Component id="helloWorldActor" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="RingActor" min="-2" pref="33" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="ActorNormal" min="-2" pref="33" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,14 +77,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RingActorActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="ActorNormal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ActorNormal"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ActorNormalActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

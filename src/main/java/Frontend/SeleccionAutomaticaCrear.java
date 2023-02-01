@@ -9,6 +9,8 @@ import Estructura.ActorContext;
 import HelloWorld.HelloWorldActor;
 import Insult.InsultActor;
 import RingActor.*;
+
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -47,7 +49,6 @@ public class SeleccionAutomaticaCrear extends javax.swing.JFrame {
         insultButton = new javax.swing.JButton();
         helloWorldActor = new javax.swing.JButton();
         RingActor = new javax.swing.JButton();
-        ActorNormal = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         returnBut = new javax.swing.JButton();
 
@@ -74,13 +75,6 @@ public class SeleccionAutomaticaCrear extends javax.swing.JFrame {
             }
         });
 
-        ActorNormal.setText("ActorNormal");
-        ActorNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActorNormalActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Selecció de Actors");
 
         returnBut.addActionListener(new java.awt.event.ActionListener() {
@@ -95,14 +89,12 @@ public class SeleccionAutomaticaCrear extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(RingActor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(insultButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ActorNormal, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
-                    .addComponent(helloWorldActor, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(helloWorldActor, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(returnBut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(returnBut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RingActor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(insultButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,58 +110,25 @@ public class SeleccionAutomaticaCrear extends javax.swing.JFrame {
                 .addComponent(helloWorldActor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(RingActor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ActorNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(72, 72, 72))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void insultButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insultButtonActionPerformed
-        int size = ActorContext.getInstance().getActorLibrary().size();
-        if(n != 0 ){
-            for(int i = 1; i<=n; i++){
-                int offset = size + i;
-                ActorContext.getInstance().spawnActor("insult"+offset, new InsultActor());
-            }
-        }
+        Controller.getInstance().insultActor(n);
     }//GEN-LAST:event_insultButtonActionPerformed
 
     private void helloWorldActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helloWorldActorActionPerformed
-        int size = ActorContext.getInstance().getActorLibrary().size();
-        if(n != 0 ){
-            for(int i = 1; i<=n; i++){
-                int offset = size + i;
-                ActorContext.getInstance().spawnActor("helloWorld"+offset, new HelloWorldActor());
-            }
-        }
+        Controller.getInstance().helloWorldActor(n);
     }//GEN-LAST:event_helloWorldActorActionPerformed
 
     private void RingActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RingActorActionPerformed
-        ArrayList<RingActor> ring = new ArrayList<>();
-        ring.add(0,new RingActor());
-        int i = 1;
-        while (i < n){
-            RingActor anterior = ring.get(i-1);
-            RingActor actual = new RingActor();
-            anterior.setNext(ActorContext.getInstance().spawnActor("Ring"+i, actual));
-            ring.add(i, actual);
-            if(i == n-1)
-                actual.setNext(ActorContext.getInstance().spawnActor("Primero",ring.get(0)));
-            i++;
-        }
+        Controller.getInstance().ringActor(n);
     }//GEN-LAST:event_RingActorActionPerformed
 
-    private void ActorNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActorNormalActionPerformed
-        int size = ActorContext.getInstance().getActorLibrary().size();
-        if(n != 0 ){
-            for(int i = 1; i<=n; i++){
-                int offset = size + i;
-                ActorContext.getInstance().spawnActor("normal"+offset, new Actor());
-            }
-        }
-    }//GEN-LAST:event_ActorNormalActionPerformed
+    
 
     private void returnButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButActionPerformed
         dispose();
@@ -214,7 +173,6 @@ public class SeleccionAutomaticaCrear extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ActorNormal;
     private javax.swing.JButton RingActor;
     private javax.swing.JButton helloWorldActor;
     private javax.swing.JButton insultButton;

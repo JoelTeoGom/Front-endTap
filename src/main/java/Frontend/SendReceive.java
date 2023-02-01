@@ -15,6 +15,8 @@ import Insult.InsultActor;
 import Message.Message;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,13 +24,8 @@ import javax.swing.*;
  */
 public class SendReceive extends javax.swing.JFrame {
 
-    ActorProxy actorProxyFrom;
-    ActorProxy actorProxyTo;
 
-    String text;
-    MessageEnum message;
 
-    int nMensajes;
     /**
      * Creates new form SendReceive
      */
@@ -192,6 +189,9 @@ public class SendReceive extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMessageActionPerformed(evt);
             }
+
+            private void textMessageActionPerformed(ActionEvent evt) {
+            }
         });
 
 
@@ -277,27 +277,48 @@ public class SendReceive extends javax.swing.JFrame {
 
 
     private void messageNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageNumActionPerformed
-        nMensajes = Integer.parseInt(messageNum.getText());
     }//GEN-LAST:event_messageNumActionPerformed
 
-    private void textMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMessageActionPerformed
-        text = textMessage.getText();
-    }//GEN-LAST:event_textMessageActionPerformed
+
 
     private void getAllInsultActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_getAllInsultActionPerformed
-        Controller.getInstance().sendGetAllInsultMessage(this);
+        ArrayList<String> list = new ArrayList<>();
+        list.add(from.getText());
+        list.add(to.getText());
+        list.add(messageNum.getText());
+        list.add(textMessage.getText());
+        MessageReceive m = new MessageReceive();
+        m.getMensaje().setText(Controller.getInstance().sendGetAllInsultMessage(list));
+        m.setVisible(true);
     }//GEN-LAST:event_getAllInsultActionPerformed
 
     private void getInsultActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_getInsultActionPerformed
-        Controller.getInstance().sendGetInsultMessage(this);
+        ArrayList<String> list = new ArrayList<>();
+        list.add(from.getText());
+        list.add(to.getText());
+        list.add(messageNum.getText());
+        list.add(textMessage.getText());
+        MessageReceive m = new MessageReceive();
+        m.getMensaje().setText(Controller.getInstance().sendGetInsultMessage(list));
+        m.setVisible(true);
     }//GEN-LAST:event_getInsultActionPerformed
 
     private void addInsultMessageActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_addInsultMessageActionPerformed
-        Controller.getInstance().sendAddInsultMessage(this);
+        ArrayList<String> list = new ArrayList<>();
+        list.add(from.getText());
+        list.add(to.getText());
+        list.add(messageNum.getText());
+        list.add(textMessage.getText());
+        Controller.getInstance().sendAddInsultMessage(list);
     }//GEN-LAST:event_addInsultMessageActionPerformed
 
     private void helloWorldActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_helloWorldActionPerformed
-        Controller.getInstance().sendHelloWorldMessage(this);
+        ArrayList<String> list = new ArrayList<>();
+        list.add(from.getText());
+        list.add(to.getText());
+        list.add(messageNum.getText());
+        list.add(textMessage.getText());
+        Controller.getInstance().sendHelloWorldMessage(list);
     }//GEN-LAST:event_helloWorldActionPerformed
 
     /**

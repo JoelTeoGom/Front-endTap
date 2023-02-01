@@ -127,6 +127,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void llistaActorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llistaActorsActionPerformed
         LlistaActors llista = new LlistaActors();
+        llista.getLlista().setText(Controller.getInstance().llistaActor());
         llista.setVisible(true);
     }//GEN-LAST:event_llistaActorsActionPerformed
 
@@ -137,7 +138,8 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_monitoritzarActionPerformed
 
     private void monitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monitorActionPerformed
-
+        MonitoritzaActors m = new MonitoritzaActors();
+        m.setVisible(true);
     }//GEN-LAST:event_monitorActionPerformed
 
     private void ringAppActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_ringAppActionPerformed

@@ -105,7 +105,7 @@ public class LlistaActors extends javax.swing.JFrame {
     }//GEN-LAST:event_llistaActionPerformed
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-        llista.setText(ActorContext.getInstance().getNames().toString());
+        llista.setText(Controller.getInstance().llistaActor());
     }//GEN-LAST:event_refreshActionPerformed
 
     /**
@@ -150,4 +150,9 @@ public class LlistaActors extends javax.swing.JFrame {
     private javax.swing.JTextField llista;
     private javax.swing.JButton refresh;
     // End of variables declaration//GEN-END:variables
+
+
+    public JTextField getLlista() {
+        return llista;
+    }
 }

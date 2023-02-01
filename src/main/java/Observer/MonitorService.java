@@ -18,9 +18,9 @@ public class MonitorService{
     private final HashMap<Traffic,List<String>> llistaTraficActor = new HashMap<>();
     private final HashMap<Event,List<String>> llistaEventsActor = new HashMap<>();
     private final HashMap<Actor,List<Event>> llistaActorEvents = new HashMap<>();
-    private final HashMap<Actor, List<Message>> llistaMessageActor = new HashMap<>();
-    private final HashMap<Actor, List<Message>> llistaSentMessageActor = new HashMap<>();
-    private final HashMap<Actor, List<Message>> llistaReceivedMessageActor = new HashMap<>();
+    private final HashMap<Actor, ArrayList<Message>> llistaMessageActor = new HashMap<>();
+    private final HashMap<Actor, ArrayList<Message>> llistaSentMessageActor = new HashMap<>();
+    private final HashMap<Actor, ArrayList<Message>> llistaReceivedMessageActor = new HashMap<>();
 
 
 
@@ -161,7 +161,7 @@ public class MonitorService{
      * @param message
      */
     public void putSentMessage(Actor actor, Message message){
-        List<Message> list = llistaSentMessageActor.get(actor);
+        ArrayList<Message> list = llistaSentMessageActor.get(actor);
         list.add(message);
         llistaSentMessageActor.put(actor,list);
     }
@@ -172,7 +172,7 @@ public class MonitorService{
      * @param message
      */
     public void putReceivedMessage(Actor actor, Message message){
-        List<Message> list = llistaReceivedMessageActor.get(actor);
+        ArrayList<Message> list = llistaReceivedMessageActor.get(actor);
         list.add(message);
         llistaReceivedMessageActor.put(actor,list);
     }
@@ -183,7 +183,7 @@ public class MonitorService{
      * @param message
      */
     public void putAllMessages(Actor actor, Message message){
-        List<Message> list = llistaMessageActor.get(actor);
+        ArrayList<Message> list = llistaMessageActor.get(actor);
         list.add(message);
         llistaMessageActor.put(actor,list);
     }
@@ -217,7 +217,7 @@ public class MonitorService{
      * @param actor
      * @return llista de missatges
      */
-    public List<Message> getNumberOfMessages(Actor actor){
+    public ArrayList<Message> getNumberOfMessages(Actor actor){
         return llistaMessageActor.get(actor);
     }
 
@@ -226,7 +226,7 @@ public class MonitorService{
      * @param actor
      * @return llista de missatges
      */
-    public List<Message> getSentMessages(Actor actor){
+    public ArrayList<Message> getSentMessages(Actor actor){
         return llistaSentMessageActor.get(actor);
     }
 
@@ -235,7 +235,7 @@ public class MonitorService{
      * @param actor
      * @return llista de missatges
      */
-    public List<Message> getReceivedMessages(Actor actor){
+    public ArrayList<Message> getReceivedMessages(Actor actor){
         return llistaReceivedMessageActor.get(actor);
     }
 

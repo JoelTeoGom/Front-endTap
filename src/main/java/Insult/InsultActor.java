@@ -29,30 +29,26 @@ public class InsultActor extends Actor {
     public void process(Message m) throws InterruptedException {
         Message message = null;
         MonitorService.getInstance().publish(Event.RECEIVE,this,m);
-        switch (m){
-            case AddInsultMessage m1:
-                listaInsultos.add(m1.getMessage());
-                break;
-            case GetInsultMessage m1:
-                int numeroAleatorio = (int) (Math.random()*(listaInsultos.size())+0);
-                ProxyProxy auxProxy = new ProxyProxy(m1.getFrom());
+        if( m instanceof AddInsultMessage) {
+            listaInsultos.add(m.getMessage());
+        }else if(m instanceof GetInsultMessage) {
+                int numeroAleatorio = (int) (Math.random() * (listaInsultos.size()) + 0);
+                ProxyProxy auxProxy = new ProxyProxy(m.getFrom());
                 message = new Message(new ActorProxy(this), listaInsultos.get(numeroAleatorio));
-                MonitorService.getInstance().publish(Event.SEND,this,message);
+                MonitorService.getInstance().publish(Event.SEND, this, message);
                 auxProxy.send(message);
-                break;
-            case GetAllInsultMessage m1:
-                ProxyProxy aux = new ProxyProxy(m1.getFrom());
-                message = new Message(new ActorProxy(this),listaInsultos.toString());
-                MonitorService.getInstance().publish(Event.SEND,this,message);
-                aux.send(message);
-                break;
-            case QuitMessage m1:
+        }else if( m instanceof GetAllInsultMessage){
+            ProxyProxy aux = new ProxyProxy(m.getFrom());
+            message = new Message(new ActorProxy(this), listaInsultos.toString());
+            MonitorService.getInstance().publish(Event.SEND, this, message);
+            aux.send(message);
+        }else if (m instanceof QuitMessage){
                 MonitorService.getInstance().publish(Event.STOPPED,this,m);
                 System.out.println("Oh hell naw!!!");
                 exit = true;
-                break;
-            default:
-                System.out.println("No s'ha enviat cap missatge");
+
+        }else {
+            System.out.println("No s'ha enviat cap missatge");
         }
 
 

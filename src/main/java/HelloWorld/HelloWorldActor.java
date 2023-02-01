@@ -15,18 +15,16 @@ public class HelloWorldActor extends Actor{
      * @param m
      */
     @Override
-    public void process(Message m){  //en esta funcion actualizaremos estado
-        MonitorService.getInstance().publish(Event.RECEIVE,this,m);
-        switch (m) {
-            case HelloWorldMessage m1 -> {
-                System.out.println(m1.getMessage());
-            }
-            case QuitMessage m1 -> {
-                System.out.println("Oh hell naw!!!");
-                MonitorService.getInstance().publish(Event.STOPPED,this,m);
-                exit = true;
-            }
-            default -> System.out.print("No se ha registrado");
+    public void process(Message m) {  //en esta funcion actualizaremos estado
+        MonitorService.getInstance().publish(Event.RECEIVE, this, m);
+        if (m instanceof HelloWorldMessage) {
+            System.out.println(m.getMessage());
+        } else if (m instanceof QuitMessage) {
+            System.out.println("Oh hell naw!!!");
+            MonitorService.getInstance().publish(Event.STOPPED, this, m);
+            exit = true;
+        } else{
+             System.out.print("No se ha registrado");
         }
     }
 }
